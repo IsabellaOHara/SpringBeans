@@ -1,5 +1,10 @@
-package com.qa.beanvalidation;
+package com.qa.depinjection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Profile {
 
 	private String forename;
@@ -7,6 +12,14 @@ public class Profile {
 	private String dateOfBirth;
 	private String gender;
 	private String ethnicity;
+	
+	@Autowired
+	@Qualifier("homeaddress")
+	private Address homeAddress;
+	
+	@Autowired
+	@Qualifier("officeaddress")
+	private Address officeAddress;
 	
 	public Profile() {}
 	
@@ -57,11 +70,29 @@ public class Profile {
 	public void setEthnicity(String ethnicity) {
 		this.ethnicity = ethnicity;
 	}
+	
+
+	public Address getHomeAddress() {
+		return homeAddress;
+	}
+
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
+	}
+
+	public Address getOfficeAddress() {
+		return officeAddress;
+	}
+
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
+	}
 
 	@Override
 	public String toString() {
 		return "Profile [forename=" + forename + ", surname=" + surname + ", dateOfBirth=" + dateOfBirth + ", gender="
-				+ gender + ", ethnicity=" + ethnicity + "]";
+				+ gender + ", ethnicity=" + ethnicity + ", homeAddress=" + homeAddress + ", officeAddress="
+				+ officeAddress + "]";
 	}
 	
 		public void init() {
