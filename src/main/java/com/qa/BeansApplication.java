@@ -20,6 +20,8 @@ public class BeansApplication {
 		System.out.println(byType);
 		System.out.println(byBoth);
 		
+		String bye = context.getBean("farewell",String.class);
+		System.out.println(bye);
 		
 	}
 
