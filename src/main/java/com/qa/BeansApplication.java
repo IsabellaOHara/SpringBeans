@@ -23,6 +23,7 @@ public class BeansApplication {
 		String bye = context.getBean("farewell",String.class);
 		System.out.println(bye);
 		
+		
 	}
 
 }
